@@ -21,7 +21,8 @@ namespace AnyAnyAnyRoles
             bool featureEnabled,
             bool isMeeting)
         {
-            return featureEnabled
+            return player != null
+                && featureEnabled
                 && isMeeting
                 && player.IsAlive
                 && player.GuessesRemaining > 0
@@ -29,13 +30,22 @@ namespace AnyAnyAnyRoles
                     || player.Role == PlayerRole.Neutral);
         }
 
-        public static bool WrongGuess(Player player)
+        public static bool CheckGuess(
+            Player player,
+            PlayerRole guessedRole,
+            bool featureEnabled,
+            bool isMeeting)
         {
-            if (!CanGuess(player, true, true))
+            if (!CanGuess(player, featureEnabled, isMeeting))
                 return false;
 
             player.GuessesRemaining--;
-            player.IsAlive = false;
+
+            if (guessedRole != player.Role)
+            {
+                player.IsAlive = false;
+            }
+
             return true;
         }
     }
