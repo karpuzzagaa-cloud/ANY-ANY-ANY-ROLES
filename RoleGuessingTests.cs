@@ -76,3 +76,38 @@ namespace AnyAnyAnyRoles
         }
     }
 }
+private static void TestWrongGuessEliminatesGuesser()
+{
+    var player = new Player
+    {
+        Role = PlayerRole.Impostor
+    };
+
+    RoleGuessingRules.CheckGuess(
+        player,
+        PlayerRole.Crewmate,
+        true,
+        true
+    );
+
+    Check(!player.IsAlive,
+        "Yanlis tahminde tahmin yapan elenmeli.");
+}
+
+private static void TestCorrectGuessDoesNotEliminateGuesser()
+{
+    var player = new Player
+    {
+        Role = PlayerRole.Neutral
+    };
+
+    RoleGuessingRules.CheckGuess(
+        player,
+        PlayerRole.Neutral,
+        true,
+        true
+    );
+
+    Check(player.IsAlive,
+        "Dogru tahminde tahmin yapan elenmemeli.");
+}
