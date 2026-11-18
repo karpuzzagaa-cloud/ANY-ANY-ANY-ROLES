@@ -4,7 +4,7 @@ namespace AnyAnyAnyRoles
 {
     public class RoleAssignment
     {
-        private Dictionary<int, RoleInfo> assignments =
+        private readonly Dictionary<int, RoleInfo> assignments =
             new Dictionary<int, RoleInfo>();
 
         public void AssignRole(int playerId, RoleInfo role)
@@ -32,5 +32,4 @@ namespace AnyAnyAnyRoles
             assignments.Clear();
         }
     }
-}private Dictionary<int, RoleInfo> assignments =
-private readonly Dictionary<int, RoleInfo> assignments =private Dictionary<int, RoleInfo> assignments =private readonly Dictionary<int, RoleInfo> assignments =
+}
