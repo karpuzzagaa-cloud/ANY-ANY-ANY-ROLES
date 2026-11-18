@@ -9,7 +9,7 @@ namespace AnyAnyAnyRoles
 
         public static void AddRole(RoleInfo role)
         {
-            if (role != null)
+            if (role != null && GetRole(role.Id) == null)
             {
                 roles.Add(role);
             }
