@@ -32,4 +32,5 @@ namespace AnyAnyAnyRoles
             assignments.Clear();
         }
     }
-}
+}private Dictionary<int, RoleInfo> assignments =
+private readonly Dictionary<int, RoleInfo> assignments =
