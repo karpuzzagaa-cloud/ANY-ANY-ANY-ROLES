@@ -1,3 +1,4 @@
+
 namespace AnyAnyAnyRoles
 {
     public enum PlayerRole
@@ -31,19 +32,27 @@ namespace AnyAnyAnyRoles
         }
 
         public static bool CheckGuess(
-            Player player,
+            Player guesser,
+            Player target,
             PlayerRole guessedRole,
             bool featureEnabled,
             bool isMeeting)
         {
-            if (!CanGuess(player, featureEnabled, isMeeting))
+            if (!CanGuess(guesser, featureEnabled, isMeeting))
                 return false;
 
-            player.GuessesRemaining--;
+            if (target == null || !target.IsAlive)
+                return false;
 
-            if (guessedRole != player.Role)
+            guesser.GuessesRemaining--;
+
+            if (guessedRole != target.Role)
             {
-                player.IsAlive = false;
+                guesser.IsAlive = false;
+            }
+            else
+            {
+                target.IsAlive = false;
             }
 
             return true;
