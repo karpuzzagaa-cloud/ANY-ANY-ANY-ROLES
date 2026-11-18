@@ -33,4 +33,4 @@ namespace AnyAnyAnyRoles
         }
     }
 }private Dictionary<int, RoleInfo> assignments =
-private readonly Dictionary<int, RoleInfo> assignments =
+private readonly Dictionary<int, RoleInfo> assignments =private Dictionary<int, RoleInfo> assignments =private readonly Dictionary<int, RoleInfo> assignments =
