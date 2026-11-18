@@ -1,0 +1,12 @@
+{
+  "feature": "RoleGuessing",
+  "enabled_by_room_host": true,
+  "allowed_roles": [
+    "Impostor",
+    "Neutral"
+  ],
+  "meeting_only": true,
+  "guesses_per_player": 5,
+  "wrong_guess": "guesser_dies",
+  "crewmates_can_guess": false
+}
