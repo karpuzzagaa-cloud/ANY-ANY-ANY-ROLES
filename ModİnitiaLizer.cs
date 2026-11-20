@@ -1,26 +1,12 @@
-namespace AnyAnyAnyRoles
+public static void Initialize()
 {
-    public static class ModInitializer
-    {
-        public static bool IsInitialized { get; private set; }
+    if (IsInitialized)
+        return;
 
-        public static void Initialize()
-        {
-            if (IsInitialized)
-                return;
+    RoleDatabase.Clear();
+    RoleRegistry.Clear();
 
-            RoleDatabase.Clear();
-            RoleRegistry.Clear();
+    DefaultRoles.RegisterAll();
 
-            IsInitialized = true;
-        }
-
-        public static void Reset()
-        {
-            RoleDatabase.Clear();
-            RoleRegistry.Clear();
-
-            IsInitialized = false;
-        }
-    }
+    IsInitialized = true;
 }
