@@ -9,11 +9,17 @@ namespace AnyAnyAnyRoles
 
         public static void RegisterAbility(RoleAbility ability)
         {
-            if (ability != null &&
-                !abilities.ContainsKey(ability.Id))
-            {
-                abilities.Add(ability.Id, ability);
-            }
+            if (ability == null)
+                return;
+
+            if (abilities.ContainsKey(ability.Id))
+                return;
+
+            if (!RoleAbilityValidator.IsValid(ability))
+                return;
+
+            abilities.Add(ability.Id, ability);
+            AbilityDatabase.Add(ability);
         }
 
         public static RoleAbility GetAbility(int id)
@@ -34,6 +40,7 @@ namespace AnyAnyAnyRoles
         public static void Clear()
         {
             abilities.Clear();
+            AbilityDatabase.Clear();
         }
     }
 }
